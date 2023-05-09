@@ -21,6 +21,7 @@ Arvore criarNo(char info, Arvore esquerdo, Arvore direito){
         arvore->info = info;
         arvore->esq = esquerdo;
         arvore->dir = direito;
+        printf("No adicionado: %c\n", info);
         return arvore;
 	}
 	return false;
@@ -30,6 +31,7 @@ Arvore criarNo(char info, Arvore esquerdo, Arvore direito){
 
 
 int main() {
+    /*
 	Arvore A = iniciarArvore();
     Arvore D = criarNo('d', iniciarArvore(), iniciarArvore());
     Arvore E = criarNo('e', iniciarArvore(), iniciarArvore());
@@ -38,7 +40,14 @@ int main() {
     Arvore C = criarNo('c', E, F);
     A = criarNo('a', B, C);
 
-
+    */
+    //Exercicio:
+    Arvore C = iniciarArvore();
+    Arvore A = criarNo('a', iniciarArvore(), iniciarArvore());
+    Arvore B = criarNo('b', A, iniciarArvore());
+    Arvore E = criarNo('e', iniciarArvore(), iniciarArvore());
+    Arvore D = criarNo('d', iniciarArvore(), E);
+    C = criarNo('c', B, D);
 
     return 0;
 }
