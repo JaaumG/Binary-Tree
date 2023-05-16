@@ -29,13 +29,16 @@ void inserir(Arvore * raiz, char info){
 
 }
 
-/*void printArvore(Arvore raiz, int ramo){
-    if(raiz!=NULL){
-        printArvore((raiz->esq), 1);
-        printArvore((raiz->dir),2);
-        printf("%c\n", raiz->info);
+int tamanhoArvore(Arvore raiz){
+    if(raiz == NULL) {
+        return -1;
+    }else {
+        int esq = tamanhoArvore(raiz->esq)+1;
+        int dir = tamanhoArvore(raiz->dir)+1;
+        return esq>dir? esq:dir;
     }
-}*/
+}
+
 
 void printPosOrdem(Arvore raiz){
     if(raiz!=NULL){
@@ -72,6 +75,8 @@ int main() {
     printOrdemSimetrica(C);
     printPosOrdem(C);
     printPreOrdem(C);
+
+    printf("%d", tamanhoArvore(C));
     return 0;
 
 }
