@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-
 
 struct arv{
 	char info;
@@ -31,35 +29,49 @@ void inserir(Arvore * raiz, char info){
 
 }
 
-void printArvore(Arvore raiz, int ramo){
+/*void printArvore(Arvore raiz, int ramo){
     if(raiz!=NULL){
-        switch (ramo) {
-            case 0:
-                printf("Raiz: ");
-                break;
-            case 1:
-                printf("Esquerda: ");
-                break;
-            default:
-                printf("Direita: ");
-                break;
-        }
-        printf("%c\n", raiz->info);
         printArvore((raiz->esq), 1);
         printArvore((raiz->dir),2);
+        printf("%c\n", raiz->info);
+    }
+}*/
+
+void printPosOrdem(Arvore raiz){
+    if(raiz!=NULL){
+        printPosOrdem((raiz->esq));
+        printPosOrdem((raiz->dir));
+        printf("%c\n", raiz->info);
     }
 }
 
+void printPreOrdem(Arvore raiz){
+    if(raiz!=NULL){
+        printf("%c\n", raiz->info);
+        printPreOrdem((raiz->esq));
+        printPreOrdem((raiz->dir));
+    }
+}
+
+void printOrdemSimetrica(Arvore raiz){
+    if(raiz!=NULL){
+        printOrdemSimetrica((raiz->esq));
+        printf("%c\n", raiz->info);
+        printOrdemSimetrica((raiz->dir));
+    }
+}
 
 int main() {
 
     Arvore C = iniciarArvore();
     inserir(&C, 'c');
-    inserir(&C, 'd');
     inserir(&C, 'b');
+    inserir(&C, 'd');
     inserir(&C, 'a');
     inserir(&C, 'e');
-    printArvore(C, 0);
+    printOrdemSimetrica(C);
+    printPosOrdem(C);
+    printPreOrdem(C);
     return 0;
 
 }
