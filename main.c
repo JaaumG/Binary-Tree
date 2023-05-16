@@ -27,7 +27,13 @@ Arvore criarNo(char info, Arvore esquerdo, Arvore direito){
 	return false;
 }
 
-
+void printArvore(Arvore raiz){
+    if(raiz!=NULL){
+        printf("%c\n", raiz->info);
+        printArvore(((raiz->esq)));
+        printArvore(((raiz->dir)));
+    }
+}
 
 
 int main() {
@@ -49,5 +55,6 @@ int main() {
     Arvore D = criarNo('d', iniciarArvore(), E);
     C = criarNo('c', B, D);
 
+    printArvore(C);
     return 0;
 }
