@@ -15,46 +15,51 @@ Arvore iniciarArvore(){
     return NULL;
 }
 
-Arvore criarNo(char info, Arvore esquerdo, Arvore direito){
-    Arvore arvore = (Arvore) malloc(sizeof(Arvore));
-	if(arvore!=NULL){
-        arvore->info = info;
-        arvore->esq = esquerdo;
-        arvore->dir = direito;
-        printf("No adicionado: %c\n", info);
-        return arvore;
-	}
-	return false;
+void inserir(Arvore * raiz, char info){
+    if((*raiz) == NULL){
+        (*raiz) = (Arvore) malloc(sizeof(Arvore));
+        (*raiz)->esq = iniciarArvore();
+        (*raiz)->dir = iniciarArvore();
+        (*raiz)->info = info;
+    }else{
+        if (info > (*raiz)->info){
+            inserir(&(*raiz)->dir, info);
+        }else {
+            inserir(&(*raiz)->esq, info);
+        }
+    }
+
 }
 
-void printArvore(Arvore raiz){
+void printArvore(Arvore raiz, int ramo){
     if(raiz!=NULL){
+        switch (ramo) {
+            case 0:
+                printf("Raiz: ");
+                break;
+            case 1:
+                printf("Esquerda: ");
+                break;
+            default:
+                printf("Direita: ");
+                break;
+        }
         printf("%c\n", raiz->info);
-        printArvore(((raiz->esq)));
-        printArvore(((raiz->dir)));
+        printArvore((raiz->esq), 1);
+        printArvore((raiz->dir),2);
     }
 }
 
 
 int main() {
-    /*
-	Arvore A = iniciarArvore();
-    Arvore D = criarNo('d', iniciarArvore(), iniciarArvore());
-    Arvore E = criarNo('e', iniciarArvore(), iniciarArvore());
-    Arvore F = criarNo('f', iniciarArvore(), iniciarArvore());
-    Arvore B = criarNo('b', iniciarArvore(), D);
-    Arvore C = criarNo('c', E, F);
-    A = criarNo('a', B, C);
 
-    */
-    //Exercicio:
     Arvore C = iniciarArvore();
-    Arvore A = criarNo('a', iniciarArvore(), iniciarArvore());
-    Arvore B = criarNo('b', A, iniciarArvore());
-    Arvore E = criarNo('e', iniciarArvore(), iniciarArvore());
-    Arvore D = criarNo('d', iniciarArvore(), E);
-    C = criarNo('c', B, D);
-
-    printArvore(C);
+    inserir(&C, 'c');
+    inserir(&C, 'd');
+    inserir(&C, 'b');
+    inserir(&C, 'a');
+    inserir(&C, 'e');
+    printArvore(C, 0);
     return 0;
+
 }
