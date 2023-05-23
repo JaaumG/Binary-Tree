@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct arv{
 	char info;
@@ -11,6 +12,21 @@ typedef struct arv * Arvore;
 
 Arvore iniciarArvore(){
     return NULL;
+}
+
+bool find(Arvore raiz, char info){
+    if(raiz!=NULL) {
+        if ((raiz->info) == info) {
+            return true;
+        } else {
+            if ((raiz->info) < info) {
+                find((raiz->dir), info);
+            } else {
+                find((raiz->esq), info);
+            }
+        }
+    }
+    return false;
 }
 
 void inserir(Arvore * raiz, char info){
@@ -75,7 +91,11 @@ int main() {
     printOrdemSimetrica(C);
     printPosOrdem(C);
     printPreOrdem(C);
-
+    if(find(C, 'a')){
+        printf("Existe");
+    }else{
+        printf("Não existe");
+    }
     printf("%d", tamanhoArvore(C));
     return 0;
 
