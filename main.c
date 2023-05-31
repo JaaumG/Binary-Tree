@@ -20,9 +20,9 @@ bool find(Arvore raiz, char info){
             return true;
         } else {
             if ((raiz->info) < info) {
-                find((raiz->dir), info);
+                return find((raiz->dir), info);
             } else {
-                find((raiz->esq), info);
+                return find((raiz->esq), info);
             }
         }
     }
