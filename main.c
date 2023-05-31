@@ -60,13 +60,13 @@ void printPosOrdem(Arvore raiz){
     if(raiz!=NULL){
         printPosOrdem((raiz->esq));
         printPosOrdem((raiz->dir));
-        printf("%c\n", raiz->info);
+        printf("%c ", raiz->info);
     }
 }
 
 void printPreOrdem(Arvore raiz){
     if(raiz!=NULL){
-        printf("%c\n", raiz->info);
+        printf("%c ", raiz->info);
         printPreOrdem((raiz->esq));
         printPreOrdem((raiz->dir));
     }
@@ -75,7 +75,7 @@ void printPreOrdem(Arvore raiz){
 void printOrdemSimetrica(Arvore raiz){
     if(raiz!=NULL){
         printOrdemSimetrica((raiz->esq));
-        printf("%c\n", raiz->info);
+        printf("%c ", raiz->info);
         printOrdemSimetrica((raiz->dir));
     }
 }
