@@ -29,6 +29,19 @@ bool find(Arvore raiz, char info){
     return false;
 }
 
+int ocorrencias(Arvore arvore, char x){
+    if(arvore != NULL) {
+        if (arvore->info == x) {
+            return 1 +  ocorrencias(arvore->esq, x);
+        }if(arvore->info < x){
+            return ocorrencias(arvore->dir, x);
+        }else{
+            return ocorrencias(arvore->esq, x);
+        }
+    }
+    return 0;
+}
+
 void inserir(Arvore * raiz, char info){
     if((*raiz) == NULL){
         (*raiz) = (Arvore) malloc(sizeof(Arvore));
