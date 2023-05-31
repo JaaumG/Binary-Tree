@@ -99,17 +99,24 @@ int main() {
     inserir(&C, 'c');
     inserir(&C, 'b');
     inserir(&C, 'd');
+    inserir(&C, 'd');
+    inserir(&C, 'd');
+    inserir(&C, 'd');
     inserir(&C, 'a');
     inserir(&C, 'e');
     printOrdemSimetrica(C);
+    printf("\n");
     printPosOrdem(C);
+    printf("\n");
     printPreOrdem(C);
-    if(find(C, 'a')){
+    printf("\n");
+    if(find(C, 'e')){
         printf("Existe");
     }else{
         printf("Não existe");
     }
     printf("%d", tamanhoArvore(C));
+    printf("\n%d", ocorrencias(C, 'd'));
     return 0;
 
 }
