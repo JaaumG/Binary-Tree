@@ -115,7 +115,7 @@ int main() {
     }else{
         printf("Não existe");
     }
-    printf("%d", tamanhoArvore(C));
+    printf("\n%d", tamanhoArvore(C));
     printf("\n%d", ocorrencias(C, 'd'));
     return 0;
 
